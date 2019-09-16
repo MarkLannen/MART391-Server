@@ -1,6 +1,11 @@
 ﻿body {
 }
 
-h1, h2, h3 {
-    color: #d5802c;
+
+h1 {
+    color: sandybrown;
+}
+
+h2 {
+    color: olivedrab;
 }

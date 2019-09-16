@@ -6,15 +6,15 @@
 <head runat="server">
     <title>Homework-3</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymou"/>
-    <link rel="stylesheet" type="text/css" href="StyleSheet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link href="StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     
 
 
          <div class="container">
-        <h1>Player Info</h1>
+        <h1 class="mb-4">Player Info</h1>
    
         <form runat="server">
             
@@ -29,11 +29,25 @@
                 </div>
                 <div class="form-group col-md-6">
                     <asp:label runat="server" text="Password" ID="PasswordLabel"></asp:label>
-                    <asp:textbox runat="server" ID="Password" CssClass="form-control"></asp:textbox>
+                    <asp:textbox runat="server" ID="Password" CssClass="form-control" TextMode="Password"></asp:textbox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ErrorMessage="* required" ControlToValidate="Password"></asp:RequiredFieldValidator>
                 </div>
              </div>
+             <div>
+                 <BotDetect:WebFormsCaptcha ID="ExampleCaptcha" runat="server" />
+            </div>
+            <div class="">
+                <BotDetect:CaptchaValidator CssClass="mt-4" ID="CaptchaValidator1" runat="server"
+                ControlToValidate="Password" CaptchaControl="ExampleCaptcha"
+                ErrorMessage="Retype the characters exactly as they appear in the picture"
+                EnableClientScript="true" SetFocusOnError="true">
+                Incorrect CAPTCHA code
+                </BotDetect:CaptchaValidator>
+            </div>
 
+            <div class="mb-5">
+                <asp:Button ID="Button1" class="btn btn-success btn-lg" runat="server" Text="Login" />
+            </div>
 
 
             <h2>Name</h2>
@@ -149,15 +163,17 @@
                 </div>
             </div>
                
-            <div class="form-row">
+            <div class="form-row mb-3">
                     <asp:Label ID="CurrencyLabel" runat="server" Text="">Currency</asp:Label>
                     <asp:TextBox ID="Currency" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
-
+            
                
             <div class="mt-3">
                 <asp:Button ID="SubmitButton" class="btn btn-primary btn-lg" runat="server" Text="Submit" />
             </div>
+
+           
        </form>  
 
 </div>
